@@ -1,0 +1,17 @@
+**.class
+**.idea
+**.iml
+**.flattened-pom.xml
+**_ignore
+**.log
+**application-loc*.properties
+**node_modules
+.classpath
+.project
+.settings/
+target/
+test-output/
+bin/
+overlays
+.gradle
+build/
