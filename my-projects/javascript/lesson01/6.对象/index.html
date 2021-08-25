@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        'use strict';
+        // 一个对象
+        var person={
+            name:"zh",
+            age:13,
+            email:"2366120116@qq.com"
+        };
+        console.log(person);
+        // 如果使用对象中未定义的属性，只会i提示undefined
+
+        // 删减属性
+        delete person.name;
+        console.log(person);
+
+        // 添加属性
+        person.id=1111;
+        console.log(person);
+
+        // 判断属性或方法是否存在于该对象
+        // 所有的属性都是键值对，键为字符串，值任意
+        if("age" in person){
+            console.log(person.age);
+        }
+        // 这个方法是继承而来的
+        if("toString" in person){
+            console.log(person.toString());
+        }
+        // 判断自身是否存在某个属性
+        if(person.hasOwnProperty("toString")){
+            console.log("hasOwnProperty(\"toString\")");
+        }
+        if(person.hasOwnProperty("age")){
+            console.log("hasOwnProperty(\"age\")");
+        }
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

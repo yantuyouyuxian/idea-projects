@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        'use strict';
+        console.log('aa');
+        console.log("aa");
+        console.log("aa\'");
+        // \u4e2d 表示一个Unicode字符。
+        // \x41 表示一个ASCII字符
+
+        var msg1= `hello
+world
+你好`;
+        console.log(msg1);
+
+        var msg2="hello\nworld\n你好";
+        console.log(msg2);
+
+        //使用$拼接字符串
+        let name="zh";
+        let age=22;
+        let per=`hello,${age}的${name}`;
+        console.log(per);
+
+        var student="0123456";
+        console.log(student);
+
+        // student[0]=1;// 无法修改
+        // console.log(student);
+
+        console.log(student.toUpperCase());
+
+        console.log(student.indexOf('z'));
+
+        console.log(student.substr(1,3));// 长度为3
+        console.log(student.substring(1,3));// 1到3，两个字符，不包含第三个字符
+
+    </script>
+
+</head>
+<body>
+
+
+</body>
+</html>

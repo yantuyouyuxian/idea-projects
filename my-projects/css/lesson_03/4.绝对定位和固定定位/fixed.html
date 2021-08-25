@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            border-width: 1px;
+            border-style: solid;
+            height: 1000px;
+        }
+        div:nth-child(1){
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            /*父级元素没有定位，会参照浏览器*/
+            right: 0px;
+            bottom: 0px;
+        }
+        div:nth-child(2){
+            width: 100px;
+            height: 100px;
+            background: blue;
+            /*固定定位，不会跟随滚动条改变位置*/
+            position: fixed;
+            left: 0px;
+            top: 0px;
+        }
+    </style>
+</head>
+<body>
+<div>div1</div>
+<div>div2</div>
+</body>
+</html>

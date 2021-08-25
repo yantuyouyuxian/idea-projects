@@ -1,0 +1,32 @@
+#content{
+    padding: 0px;
+    margin: 0px;
+    font-size: 12px;
+    /*line-height: 25px;*/
+}
+body{
+    border: 1px solid black;
+    padding: 10px;
+}
+div{
+    border: 1px solid red;
+}
+ul{
+    border: 1px solid blue;
+    list-style: none;
+}
+li{
+    border: 1px solid green;
+    list-style: none;
+}
+.tipText,.tipBg{
+    z-index: 10;
+}
+.tipBg{
+    background: #ff000066;
+    /*opacity: 0.3;*/
+}
+img{
+    border: 1px solid black;
+    margin: 0px;
+}

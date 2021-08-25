@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.5.1.js"></script>
+    <style>
+        body{
+            border: 1px solid red;
+        }
+        #div1{
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<a href="#" id="a1">a1 点一下</a>
+<p id="p1">p1</p>
+<p id="p2">p2</p>
+<div id="div1"></div>
+<ul id="ul1">
+    <li class="java">java</li>
+    <li name="python">python</li>
+</ul>
+
+    <script>
+        $("#ul1 li[name='python']").text();
+        $("#ul1 li[name='python']").css("color","red");
+        // $("#ul1 li[name='python']").hide();
+        // $(window).width();
+
+
+
+        // $(document).read(function (){
+        //
+        // })
+        $(function (){
+            $("body").mousemove(function (e){
+                $("#p2").text("x:"+e.screenX+"y:"+e.screenY);
+            })
+        })
+        // $(selector).acton()
+        $("#a1").click(function (){
+
+        })
+
+        //事件
+        $("#a1").mousedown(function (){
+            $("#p1").text("mousedown");
+        })
+
+        $("#a1").mouseenter(function (){
+            $("#p1").text("mouseenter");
+        })
+
+        $("#a1").mouseleave(function (){
+            $("#p1").text("mouseleave");
+        })
+
+        $("#a1").mousemove(function (){
+            $("#p1").text("mousemove");
+        })
+
+        $("#a1").mouseup(function (){
+            $("#p1").text("moseup");
+        })
+
+        $("#a1").mouseover(function (){
+            $("#p1").text("mouseover");
+        })
+    </script>
+
+</body>
+</html>

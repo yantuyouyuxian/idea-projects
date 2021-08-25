@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*相对定位，相对于自己原来位置的偏移*/
+        div{
+            margin: 20px;
+            padding: 0px;
+            line-height: 30px;
+        }
+        #father{
+            border: 3px solid red;
+        }
+        #first{
+            border: 3px solid yellow;
+            background-color: yellow;
+            position: relative;
+            top: 20px;
+            left: 20px;
+
+        }
+        #secontd{
+            border: 3px solid blue;
+            background-color: blue;
+            position: relative;
+            bottom: 30px;
+        }
+        #third{
+            border: 3px solid gray;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+<div id="father">
+    <div id="first">第一个div</div>
+    <div id="secontd">第二个div</div>
+    <div id="third">第三个div</div>
+</div>
+</body>
+</html>

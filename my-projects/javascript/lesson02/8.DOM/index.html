@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="" type="text/css">
+    <script type="text/javascript" src=""></script>
+    <style>
+
+    </style>
+</head>
+<!--文档对象模型-->
+<body>
+<div id="div">
+
+    <h1>h1</h1>
+    <p id = "p1">p1</p>
+    <p class = "p2">p2</p>
+
+</div>
+
+<p id="js">JavaScript</p>
+<div id="list">
+    <p id="se">JavaSE</p>
+    <p id="ee">JavaEE</p>
+</div>
+
+<script>
+    // 获取结点
+    var vh1=document.getElementsByTagName("h1");
+    var vp1=document.getElementById("p1");
+    var vp2=document.getElementsByClassName("p2");
+    var vdiv=document.getElementById("div");
+
+    var children=vdiv.children;
+
+
+    // 设置结点的内容和样式
+    // div.innerText="div";
+    // div.innerHTML='<a href="https://www.baidu.com">www.baidu.com</a>';
+
+    // div.style.backgroundColor='blue';
+    vdiv.style.borderColor='solid 1px yellow';
+
+
+    // 删除结点
+    // vdiv.removeChild(vp1);
+    // vp1.parentElement.removeChild(vp1);
+    // vdiv.removeChild(vdiv.children[0]);
+
+
+    // 插入结点
+    // 如果结点为空，可以使用innerHTML设置
+    var vjs=document.getElementById("js"),
+        vee=document.getElementById("ee"),
+        vlist=document.getElementById("list");
+    // vlist.appendChild(vjs);
+    var newp=document.createElement('p');
+    newp.id="newp";
+    newp.innerText="a new p";
+    vlist.appendChild(newp);
+    vlist.insertBefore(vjs,vee);
+
+
+
+    //创建一个特殊结点
+    var newscript=document.createElement('script');
+    newscript.setAttribute('type',"text/javascript");
+    newscript.setAttribute('src',src="");
+    var vhead=document.getElementsByTagName('head');
+    vhead[0].appendChild(newscript);
+
+
+    var newstyle=document.createElement('style');
+    newstyle.innerText=newstyle.innerText+"body{background-color:green;}";
+    vhead[0].appendChild(newstyle);
+</script>
+</body>
+</html>

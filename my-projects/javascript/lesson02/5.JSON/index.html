@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--JavaScript Object Notation-->
+<!--JSON是轻量级的数据交换格式-->
+<script>
+    let user={
+        name: "zh",
+        age: 22,
+        gender: "man"
+    }
+
+    let jsonuser=JSON.stringify(user);
+    console.log(user);
+    console.log(jsonuser);// {"name":"zh","age":22,"gender":"man"}
+
+    // 也可以使用单引号包裹
+    let parseuser=JSON.parse("{\"name\":\"zh\",\"age\":22,\"gender\":\"man\"}");
+    console.log(parseuser);
+
+
+</script>
+
+</body>
+</html>

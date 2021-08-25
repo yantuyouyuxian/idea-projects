@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        "use strict";
+
+        // map
+        let map=new Map();
+        map.set('tom',20);
+        map.set('jack',20);
+
+        // 唯一，重复键值不会保存
+        map.set('tom',20);
+        console.log(map);
+        console.log(map.get("tom"));
+        // delete
+        map.delete("tom");
+        console.log(map);
+        // has
+        console.log(map.has("jack"));
+
+
+        // set (无序，不重复)
+        let set=new Set();
+        set.add(1);
+        set.add(2);
+        set.add("22222");
+        // 重复的不会添加
+        set.add(2);
+        console.log(set);
+        // delete
+        set.delete(2);
+        console.log(set);
+        // has
+        console.log(set.has(1));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

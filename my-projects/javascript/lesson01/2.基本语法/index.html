@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        // 1定义变量，注释后面加一个空格
+        var num=1;
+        alert(num);
+        // 2条件控制
+        if(2>1){
+            alert("true");
+        }
+        /*
+        *
+        * */
+        // 在浏览器的控制台中打印变量
+        // console.log(num);
+        // NaN not a number，NaN与包括自己的所有的数值均不相等（===）
+        //isNaN(NaN); 结果为true
+        // Infinity  无限大
+
+        // == 类型不一样，值一样会判断为true，不建议使用
+        // === 绝对等于，类型和值均一样为true
+        console.log("=====");
+        console.log(5 == '5');
+        console.log(5 === '5');
+        console.log("=====");
+
+
+        console.log(1/3 === (1-2/3));
+        console.log(Math.abs(1/3-(1-2/3)) < 0.00001);
+
+        // null
+        // undefined
+
+        // 一个数组
+        var arr = [1, 3, 4, "hello", null, true];
+        console.log(arr);
+
+        // Person person=new Person();
+        // 定义一个对象
+        var person={
+            name:"zh",
+            age:13,
+            tags:['js','java']
+        }
+
+    </script>
+
+
+</head>
+<body>
+
+</body>
+</html>

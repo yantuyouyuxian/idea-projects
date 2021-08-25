@@ -1,0 +1,32 @@
+#nav{
+    width: 400px;
+    background: gray;
+}
+
+.title{
+    font-size: 15px;
+    /*font-weight: bold;*/
+    text-indent: 2em;
+    line-height: 25px;
+    background: deepskyblue;
+}
+ul{
+    background: gray;
+}
+ul li{
+    line-height: 25px;
+    font-size: 15px;
+    list-style: none;
+    /*list-style: circle;*/
+    /*list-style: decimal;*/
+    /*text-indent: 1em;*/
+}
+a{
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+}
+a:hover{
+    color: deepskyblue;
+    text-decoration: underline;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+    // __proto__，设置proto原型
+    var user={
+        name: "user",
+        age: 22,
+        run: function (){
+            console.log(this.name+" run...");
+        }
+    }
+
+    var xiaoming={
+        name: "xiaoming"
+    }
+    // 设置xiaoming的原型，类似继承
+    xiaoming.__proto__=user;
+
+    // class
+    class Student{
+        constructor(name) {
+            this.name=name;
+        }
+        hello(){
+            alert('hello');
+        }
+    }
+    var aaa=new Student('aaa');
+
+    class MiddleStudent extends Student{
+        constructor(name,age) {
+            super(name);
+            this.age=age;
+        }
+        test(){
+            alert("middle test");
+        }
+    }
+
+    var bbb=new MiddleStudent("bbb",14);
+
+</script>
+</body>
+</html>

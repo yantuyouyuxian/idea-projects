@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        /*p{*/
+        /*    color: deepskyblue;*/
+        /*}*/
+        /*后代选择器*/
+        ul p{
+            background: greenyellow;
+        }
+
+        ol p{
+            background: darkorange;
+        }
+        /*子选择器*/
+        body>p{
+            background: deeppink;
+        }
+        /*弟弟选择器，只有一个
+          可以使用id定位一个元素，或类选择器定位某类元素*/
+        #p1+p{
+            background: darkorchid;
+        }
+        /*通用选择器（弟弟们选择器）*/
+        .select~p{
+            border-radius: 20px;
+        }
+    </style>
+
+</head>
+<body>
+
+<p>p0</p>
+<p class="select" id="p1">p1</p>
+<p>p2</p>
+<p>p3</p>
+
+<ul>
+    <li>
+        <p>ul-li-p4</p>
+    </li>
+    <li>
+        <p>ul-li-p5</p>
+    </li>
+
+    <li>
+        <p>ul-li-p6</p>
+    </li>
+</ul>
+
+<ol>
+    <li>
+        <p>ol-li-p7</p>
+    </li>
+    <li>
+        <p>ol-li-p8</p>
+    </li>
+
+    <li>
+        <p>ol-li-p9</p>
+    </li>
+</ol>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        // 方式一
+        function abs1(x){
+            // arguments
+            for(let i=0;i<arguments.length;i++){
+                console.log(i+" "+arguments[i]);
+            }
+            // typeof
+            if(typeof x !== 'number'){
+                throw "not a number";
+            }
+            if(x>=0){
+                return x;
+            }else{
+                return -x;
+            }
+        }
+        // 方式二
+        let abs2 = function (x){
+            if(x>=0){
+                return x;
+            }else{
+                return -x;
+            }
+        }
+
+        // 多个参数的问题
+        // rest，获取传入的多余的参数
+        function aaa(a,b,...rest){
+            console.log("a="+a);
+            console.log("b="+b);
+            console.log(rest);
+        }
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

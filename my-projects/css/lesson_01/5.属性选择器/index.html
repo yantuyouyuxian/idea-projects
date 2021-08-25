@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .demo a{
+            border-radius: 5px;
+            color: black;
+            width: 50px;
+            height: 50px;
+            float: left;
+            background: dodgerblue;
+            text-decoration: none;
+            text-align: center;
+            margin: 20px;
+            line-height: 50px;
+        }
+        /*选择带有id属性的元素*/
+        a[id]{
+            background: yellow;
+        }
+
+        a[id=first]{
+            background: red;
+        }
+
+        /*class属性中包含item的元素*/
+        a[class*="item"]{
+            background: deeppink;
+        }
+
+        /*选中href中以http开头的元素*/
+        a[href^=http]{
+            background: blueviolet;
+        }
+
+        /*选中href中以pdf结尾的元素*/
+        a[href$=pdf]{
+            background: gray;
+        }
+
+    </style>
+</head>
+<body>
+    <p class="demo">
+        <a href="https://www.baidu.com" class="item first" id="first">1</a>
+        <a href="https://www.taobao.com" class="links item">2</a>
+        <a href="a.pdf" class="links iitem">3</a>
+        <a href="b.pdf" class="links iitem">4</a>
+        <a href="c.pdf" class="links iitem">5</a>
+        <a href="" class="links iitem">6</a>
+        <a href="" class="links iitem">7</a>
+    </p>
+</body>
+</html>

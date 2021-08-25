@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<script>
+    function playGame(){
+        return this.game;
+    }
+
+    var person={
+        name: "zh",
+        birth: 1998,
+        game: "lol",
+        getage: function (){
+            var age= new Date().getFullYear()-this.birth;
+            return age;
+        },
+        // 也可以外部定义方法，内部引用
+        play: playGame// 这种写法调用时需要加()
+        // play: playGame() //这种写法不用加()
+    };
+
+    playGame.apply(person);// 将playGame指向person，参数为空
+
+
+
+
+</script>
+
+
+</body>
+</html>

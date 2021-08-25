@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        /*选择属于其父元素的首个子元素的每个 <p> 元素，并为其设置样式*/
+        p:first-child{
+            background: yellow;
+        }
+        /*指定属于其父元素的最后一个子元素的 p 元素的背景色*/
+        p:last-child{
+            background: dodgerblue;
+        }
+        /*选择在父类元素中处于第一个或最后一个位置p元素*/
+    </style>
+
+</head>
+<body>
+    <h1>first-child,last-child</h1>
+    <p>p1</p>
+    <p>p2</p>
+    <p>p3</p>
+    <ul>
+        <li>l1</li>
+        <li>l2</li>
+        <li>l3</li>
+    </ul>
+    <P>P4</P>
+</body>
+</html>

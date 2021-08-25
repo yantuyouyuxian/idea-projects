@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+
+
+
+        function test1(){
+            // 函数体中var声明，函数外使用无效
+            var y;
+            var x='x'+y;// x=xundefined
+            console.log(x);
+        }
+        test1();
+
+        // x is not defined
+        // console.log(x);
+
+        function test2(){
+            //
+            var x=1;
+        }
+
+        // 全局对象 window
+        var w='window';
+        alert(w);
+        // 默认所有的全局变量都会绑定到window中，如果不懂的js文件使用了同名的全局变量，就会产生冲突。
+        window.alert(window.w);
+
+        //减少冲突
+        var app1={};
+        app1.name="app1";
+        app1.add=function (a,b){
+            return a+b;
+        }
+
+        // 局部作用域
+        function func(){
+            for (var i = 0; i < 10; i++) {
+                console.log(i);
+            }
+            // for循环中定义的var变量，出了for循环依然有效
+            console.log(++i);
+            // 因此建议使用let定义i
+        }
+        func();
+        // 但在这里就无效了
+        // console.log(i++);
+
+
+        // const 常量
+        const PI=3.14;
+
+
+    </script>
+
+
+</head>
+<body>
+
+</body>
+</html>

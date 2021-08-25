@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*处理父级边框塌陷的问题：*/
+        /*1：设置高度*/
+        /*2：添加一个空的div，并设置该divclear:both;*/
+        /*3：设置父级元素overflow:hidden;*/
+        /*4：给父级元素自动添加一个伪类：*/
+        /*#father:after{*/
+        /*    content: '';*/
+        /*    display: block;*/
+        /*    clear: both;*/
+        /*}*/
+        div{
+            /*div块元素不设置宽高会独占一行*/
+            /*width: 200px;*/
+            /*height: 200px;*/
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid black;
+            /*overflow: scroll;*/
+            overflow: hidden;
+            /*overflow: auto;*/
+        }
+        span{
+            display: block;
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+        }
+        ul,li{
+            width: 100px;
+            margin: 20px auto;
+            /*display: inline;*/
+            border: 1px solid red;
+        }
+        /*块级元素独占一行，可以设置宽高和外边距*/
+        li{
+            margin-left: 30px;
+            margin-top: 20px;
+        }
+        /*行内元素设置宽度、高度无效*/
+        a{
+            border: 1px solid red;
+            width: 300px;
+            height: 300px;
+        }
+        /*img也是行内元素，但可以设置宽高*/
+        img{
+            border: 1px solid red;
+            width: 384px;
+            height: 216px;
+            clear: both;
+        }
+        .imgdiv{
+            display: inline-block;
+            float: right;
+        }
+
+        #null{
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div>div 块元素
+        <div class="imgdiv"><img src="images/70.jpg"></div>
+        <div class="imgdiv"><img src="images/70.jpg"></div>
+        <div class="imgdiv"><img src="images/70.jpg"></div>
+<!--        <div id="null"></div>-->
+    </div>
+
+    <span>span 行元素</span>
+
+    <ul>
+        <li>abc</li>
+        <li>abc</li>
+        <li>abc</li>
+        <li>abc</li>
+    </ul>
+    <a href="#">adfasdfsadf</a>
+<!--    <img src="images/70.jpg">-->
+    <a href="#">adfasdfsadf</a>
+    <a href="#">adfasdfsadf</a>
+
+
+</body>
+</html>

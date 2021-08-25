@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            border-width: 1px;
+            border-style: solid;
+        }
+        div{
+            margin: 10px;
+            /*padding: 5px;*/
+            font-size: 15px;
+            line-height: 20px;
+            border-width: 1px;
+            border-style: solid;
+        }
+        #father{
+            border-color: red;
+            /*设置父级元素为相对定位，但不改变他的位置，就可以给子元素进行绝对定位*/
+            position: relative;
+        }
+        #first{
+            background: gray;
+            border-color: blue;
+        }
+        #second{
+            border-color: green;
+            background: gray;
+            /*没有父级元素定位的前提下，相对浏览器定位*/
+            position: absolute;
+            right: -10px;
+            top: -20px;
+        }
+        #third{
+            border-color: yellow;
+            background: gray;
+        }
+    </style>
+</head>
+<body>
+    <div id="father">
+        <div id="first">first</div>
+        <div id="second">second</div>
+        <div id="third">third</div>
+    </div>
+</body>
+</html>
