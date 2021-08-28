@@ -24,6 +24,7 @@
         <module>jedis-redis</module>
         <module>redis-second-kill</module>
         <module>java-io</module>
+        <module>java-nio</module>
     </modules>
 
     <dependencies>
