@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>juc</module>
+        <module>java-juc</module>
         <module>leetcode</module>
         <module>java-annotation</module>
         <module>java-reflect</module>
