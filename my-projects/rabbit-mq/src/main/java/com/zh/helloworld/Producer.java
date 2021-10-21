@@ -15,7 +15,7 @@ import java.nio.charset.StandardCharsets;
  * @ Description
  */
 public class Producer {
-    public static final String QUEUE_NAME = "HELLO";
+    public static final String QUEUE_NAME = "hello";
 
     @Test
     public void sendMsgTest() throws Exception {

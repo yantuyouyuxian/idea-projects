@@ -45,14 +45,14 @@ class MybatisPlusApplicationTests {
         // Step3：数据源配置（需要修改）
         DataSourceConfig dsc = new DataSourceConfig();
         // 配置数据库 url 地址
-        dsc.setUrl("jdbc:mysql://localhost:3306/longcheer?useUnicode=true&characterEncoding=utf8&useSSl=true&serverTimezone=UTC");
+        dsc.setUrl("jdbc:mysql://10.0.0.75:3306/ibp_plan?useUnicode=true&characterEncoding=utf8&useSSl=true&serverTimezone=UTC");
         // dsc.setSchemaName("testMyBatisPlus"); // 可以直接在 url 中指定数据库名
         // 配置数据库驱动
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         // 配置数据库连接用户名
         dsc.setUsername("root");
         // 配置数据库连接密码
-        dsc.setPassword("2242757980");
+        dsc.setPassword("123456");
         mpg.setDataSource(dsc);
 
         // Step:4：包配置
@@ -65,22 +65,17 @@ class MybatisPlusApplicationTests {
         // 配置 entity 包名
         pc.setEntity("entity");
         // 配置 mapper 包名
-        pc.setMapper("mapper");
-        // 配置 service 包名
-        pc.setService("service");
-        // 配置 controller 包名
-        pc.setController("controller");
+//        pc.setMapper("mapper");
+//        // 配置 service 包名
+//        pc.setService("service");
+//        // 配置 controller 包名
+//        pc.setController("controller");
         mpg.setPackageInfo(pc);
 
         // Step5：策略配置（数据库表配置）
         StrategyConfig strategy = new StrategyConfig();
         // 指定表名（可以同时操作多个表，使用 , 隔开）（需要修改）
-//        strategy.setInclude("T_VIRTUAL_WAREHOUSE,T_VW_ITEM_REF,T_VW_SUB_GROUP,T_VW_SUB_GROUP_ITEM_REF,T_VW_VW_SUB_SET_REF");
-//        strategy.setInclude("T_VIRTUAL_WAREHOUSE");
-//        strategy.setInclude("T_VW_ITEM_REF");
-//        strategy.setInclude("T_VW_SUB_GROUP");
-//        strategy.setInclude("T_VW_SUB_GROUP_ITEM_REF");
-        strategy.setInclude("T_VW_VW_SUB_SET_REF");
+        strategy.setInclude("T_MD_MTL_TRANSACTION_90");
         // 配置数据表与实体类名之间映射的策略
         strategy.setNaming(NamingStrategy.underline_to_camel);
         // 配置数据表的字段与实体类的属性名之间映射的策略
