@@ -15,7 +15,7 @@ import java.util.concurrent.TimeoutException;
 public class RabbitMqUtils {
     private static final String IP_ADD = "192.168.159.222";
 //        private static final String IP_ADD = "192.168.19.10";
-    private static final String VHOST_NAME = "/ems";
+    private static final String VHOST_NAME = "/";
     public static final String ACCOUNT = "admin";
     public static final String PASSWORD = "123456";
     private static final ConnectionFactory factory;
