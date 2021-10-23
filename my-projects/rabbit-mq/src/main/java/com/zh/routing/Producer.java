@@ -1,4 +1,4 @@
-package com.zh.fanout;
+package com.zh.routing;
 
 import com.rabbitmq.client.BuiltinExchangeType;
 import com.rabbitmq.client.Channel;
@@ -11,19 +11,22 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * @ Author         zhangHan
- * @ Date           2021/10/21 20:59
+ * @ Date           2021/10/22 14:18
  * @ Description
  */
 public class Producer {
+
     @Test
-    public void produce() throws Exception {
+    public void sendMsg() throws Exception {
         Connection connection = RabbitMqUtils.getConnection();
         Channel channel = connection.createChannel();
-        //声明交换机
-        //参数1：交换机名称
-        //参数2：交换机类型
-        channel.exchangeDeclare("logs", BuiltinExchangeType.FANOUT);
-        //发送消息给交换机
-        channel.basicPublish("logs", "", null, "logs fanout".getBytes(StandardCharsets.UTF_8));
+
+        channel.exchangeDeclare("logs.direct", BuiltinExchangeType.DIRECT);
+
+        String routingKey = "warn";
+
+        channel.basicPublish("logs.direct", routingKey, null, (routingKey + "消息").getBytes(StandardCharsets.UTF_8));
+
+        RabbitMqUtils.closeRabbitLink(channel, connection);
     }
 }

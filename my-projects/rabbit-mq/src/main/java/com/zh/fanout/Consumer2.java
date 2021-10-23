@@ -18,12 +18,12 @@ public class Consumer2 {
         Connection connection = RabbitMqUtils.getConnection();
         Channel channel = connection.createChannel();
         //绑定交换机
-        channel.exchangeDeclare("notice", BuiltinExchangeType.FANOUT);
+        channel.exchangeDeclare("logs", BuiltinExchangeType.FANOUT);
 
         //临时队列
         String queue = channel.queueDeclare().getQueue();
         //绑定交换机和临时队列
-        channel.queueBind(queue, "notice", "");
+        channel.queueBind(queue, "logs", "");
         DeliverCallback deliverCallback = (consumerTag, message) -> {
             String msg = new String(message.getBody(), StandardCharsets.UTF_8);
             System.out.println("[x] Received:" + msg + "。");

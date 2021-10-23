@@ -28,6 +28,7 @@
         <module>jpa</module>
         <module>mybatis-plus</module>
         <module>rabbit-mq</module>
+        <module>rabbitmq-springboot</module>
     </modules>
 
     <dependencies>
