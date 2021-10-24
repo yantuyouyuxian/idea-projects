@@ -15,16 +15,13 @@ public class ConsumerInfo {
     public static void main(String[] args) throws Exception {
         Connection connection = RabbitMqUtils.getConnection();
         Channel channel = connection.createChannel();
-
         channel.exchangeDeclare("logs.direct", BuiltinExchangeType.DIRECT);
-
         String queue = channel.queueDeclare().getQueue();
         String routingKey = "info";
+        //将接收路由和交换机绑定
         channel.queueBind(queue, "logs.direct", routingKey);
-
         channel.basicConsume(queue, true,
                 (consumerTag, message) -> System.out.println(new String(message.getBody())),
                 consumerTag -> {});
-
     }
 }

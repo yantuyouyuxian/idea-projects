@@ -19,16 +19,12 @@ public class Producer {
     public void sendMsg() throws Exception {
         Connection connection = RabbitMqUtils.getConnection();
         Channel channel = connection.createChannel();
-
         //* 匹配一个单词
         //# 匹配0或多个单词
         String exchangeName = "exchangeTopics";
         channel.exchangeDeclare(exchangeName, BuiltinExchangeType.TOPIC);
-
         String routingKey = "user.update";
         channel.basicPublish(exchangeName, routingKey, null, ("topics:routingKey:[" + routingKey + "]").getBytes(StandardCharsets.UTF_8));
-
         RabbitMqUtils.closeRabbitLink(channel, connection);
-
     }
 }

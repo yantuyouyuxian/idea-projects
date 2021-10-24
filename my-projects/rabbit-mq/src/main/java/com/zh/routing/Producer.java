@@ -20,13 +20,10 @@ public class Producer {
     public void sendMsg() throws Exception {
         Connection connection = RabbitMqUtils.getConnection();
         Channel channel = connection.createChannel();
-
         channel.exchangeDeclare("logs.direct", BuiltinExchangeType.DIRECT);
-
+        //发送指定交换机指定路由的消息
         String routingKey = "warn";
-
         channel.basicPublish("logs.direct", routingKey, null, (routingKey + "消息").getBytes(StandardCharsets.UTF_8));
-
         RabbitMqUtils.closeRabbitLink(channel, connection);
     }
 }

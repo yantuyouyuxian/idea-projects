@@ -17,15 +17,11 @@ import java.util.concurrent.TimeoutException;
 public class Consumer {
     //队列名称
     public static final String QUEUE_NAME = "hello";
-
     public static void main(String[] args) throws IOException, TimeoutException {
-
         Connection connection = RabbitMqUtils.getConnection();
         Channel channel = connection.createChannel();
-
         //绑定队列
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String msg = new String(delivery.getBody(), StandardCharsets.UTF_8);
             System.out.println("[x] Received:" + msg + "。");

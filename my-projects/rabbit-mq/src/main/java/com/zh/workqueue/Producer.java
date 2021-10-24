@@ -23,7 +23,6 @@ public class Producer {
         Connection connection = RabbitMqUtils.getConnection();
         Channel channel = connection.createChannel();
         channel.queueDeclare("work", true, false, false, null);
-
         for (int i = 1; i <= 10; i++) {
             channel.basicPublish("", "work", MessageProperties.PERSISTENT_TEXT_PLAIN, ("第" + i + "条消息").getBytes(StandardCharsets.UTF_8));
         }

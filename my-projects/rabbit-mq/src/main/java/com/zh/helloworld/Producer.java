@@ -16,12 +16,10 @@ import java.nio.charset.StandardCharsets;
  */
 public class Producer {
     public static final String QUEUE_NAME = "hello";
-
     @Test
     public void sendMsgTest() throws Exception {
 
         Connection connection = RabbitMqUtils.getConnection();
-        assert connection != null;
         Channel channel = connection.createChannel();
         //通道绑定队列
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);

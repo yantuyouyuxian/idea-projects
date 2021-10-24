@@ -19,7 +19,6 @@ public class Consumer2 {
         Channel channel = connection.createChannel();
         //绑定交换机
         channel.exchangeDeclare("logs", BuiltinExchangeType.FANOUT);
-
         //临时队列
         String queue = channel.queueDeclare().getQueue();
         //绑定交换机和临时队列

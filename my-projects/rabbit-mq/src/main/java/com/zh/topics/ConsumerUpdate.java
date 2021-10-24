@@ -14,13 +14,10 @@ public class ConsumerUpdate {
     public static void main(String[] args) throws Exception {
         Connection connection = RabbitMqUtils.getConnection();
         Channel channel = connection.createChannel();
-
         String exchangeName = "exchangeTopics";
         channel.exchangeDeclare(exchangeName, BuiltinExchangeType.TOPIC);
-
         String queue = channel.queueDeclare().getQueue();
         channel.queueBind(queue,exchangeName,"#");
-
         channel.basicConsume(queue, true,
                 (consumerTag, message) -> System.out.println(new String(message.getBody())),
                 consumerTag -> {});

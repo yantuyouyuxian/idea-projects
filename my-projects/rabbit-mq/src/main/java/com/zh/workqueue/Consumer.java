@@ -13,16 +13,15 @@ import java.nio.charset.StandardCharsets;
  */
 public class Consumer implements Runnable {
 
-    private Connection connection;
-    private String queueName;
-    private Integer seconds;
+    private final Connection connection;
+    private final String queueName;
+    private final Integer seconds;
 
     public Consumer(Connection connection, String queueName, Integer seconds) {
         this.connection = connection;
         this.queueName = queueName;
         this.seconds = seconds;
     }
-
     @Override
     public void run() {
         try {
