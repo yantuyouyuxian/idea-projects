@@ -28,7 +28,7 @@ public class TestRabbitMq {
     //workqueue
     @Test
     public void testWork() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i <10; i++) {
             rabbitTemplate.convertAndSend("work", "hello world " + i);
         }
     }
