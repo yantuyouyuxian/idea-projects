@@ -3,7 +3,13 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @ Author         zhangHan
@@ -12,13 +18,27 @@ import java.util.Date;
  */
 public class MyTest {
 
+    class Person{
+        String gender;
+        Integer age;
+        String name;
+        publi
+    }
+
+    @Test
+    public void test05() {
+        Map<String, List<String>> map = new HashMap<>();
+        map.put(null, Arrays.asList("1", "2", "3"));
+        System.out.println(map.get(null));
+    }
+
     @Test
     public void test04() {
-        Date udate = new Date();
-        LocalDateTime dateTime = LocalDateTime.now();
-        LocalDate date = LocalDate.now();
-//        java.sql.Date sdate = new java.sql.Date(udate.getTime());
-        java.sql.Date sdate = java.sql.Date.valueOf(date);
+        List<Integer> list = Arrays.asList(1, 2, 4, 4, 5);
+        String str = list.stream().map(String::valueOf).collect(Collectors.joining(","));
+        System.out.println(str);
+        List<String> strList = Arrays.asList("1", "2", "3");
+        System.out.println(String.join(",", strList));
     }
 
     @Test
