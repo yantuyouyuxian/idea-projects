@@ -1,11 +1,9 @@
 import org.junit.jupiter.api.Test;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,11 +16,33 @@ import java.util.stream.Collectors;
  */
 public class MyTest {
 
-    class Person{
+    class Person {
         String gender;
         Integer age;
         String name;
-        publi
+    }
+
+    class KdOrg implements Serializable {
+        private static final long serialVersionUID = 1455451885124837472L;
+        Integer fromOrg;
+        Integer toOrg;
+        public KdOrg(Integer fromOrg, Integer toOrg) {
+            this.fromOrg = fromOrg;
+            this.toOrg = toOrg;
+        }
+    }
+
+    @Test
+    public void test06() {
+        Map<String, List<KdOrg>> kdOrgMap = new HashMap<>();
+        ArrayList<KdOrg> kdOrgs = new ArrayList<KdOrg>(){
+            {
+                add(new KdOrg(1,2));
+                add(new KdOrg(2,3));
+            }
+        };
+        kdOrgMap.put("vw1",kdOrgs);
+        System.out.println(kdOrgMap.toString());
     }
 
     @Test
