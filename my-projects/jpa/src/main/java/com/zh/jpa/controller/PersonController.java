@@ -1,7 +1,6 @@
 package com.zh.jpa.controller;
 
 
-import com.zh.jpa.entity.Person;
 import com.zh.jpa.repository.PersonRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,8 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import entity.Person;
 
 /**
  * @ Author         zhangHan
@@ -18,8 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "person")
 public class PersonController {
-    @Autowired
+
     private PersonRepository personRepository;
+
+    @Autowired
+    public void setPersonRepository(PersonRepository personRepository) {
+        this.personRepository = personRepository;
+    }
 
     @PostMapping(path = "addPerson")
     public void addPerson(Person person) {

@@ -1,4 +1,4 @@
-package com.zh.jpa.entity;
+package entity;
 
 
 import javax.persistence.Column;
@@ -12,7 +12,7 @@ import lombok.Setter;
 
 /**
  * @ Author         zhangHan
- * @ Date           2021/9/24 10:43
+ * @ Date           2021/11/19 16:40
  * @ Description
  */
 @Entity
@@ -25,9 +25,9 @@ public class Person {
     @GeneratedValue
     private Long id;
 
-    @Column(name = "name", length = 20)
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "age", length = 4)
+    @Column(name = "age")
     private int age;
 }

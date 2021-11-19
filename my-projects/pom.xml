@@ -29,10 +29,16 @@
         <module>mybatis-plus</module>
         <module>rabbit-mq</module>
         <module>rabbitmq-springboot</module>
+        <module>apiobject</module>
+        <module>design-mode</module>
     </modules>
 
     <dependencies>
-
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+        </dependency>
     </dependencies>
 
     <properties>

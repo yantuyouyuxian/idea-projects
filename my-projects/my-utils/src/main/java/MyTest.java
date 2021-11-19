@@ -1,4 +1,4 @@
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -16,16 +16,17 @@ import java.util.stream.Collectors;
  */
 public class MyTest {
 
-    class Person {
+    static class Person {
         String gender;
         Integer age;
         String name;
     }
 
-    class KdOrg implements Serializable {
+    static class KdOrg implements Serializable {
         private static final long serialVersionUID = 1455451885124837472L;
         Integer fromOrg;
         Integer toOrg;
+
         public KdOrg(Integer fromOrg, Integer toOrg) {
             this.fromOrg = fromOrg;
             this.toOrg = toOrg;
@@ -35,13 +36,15 @@ public class MyTest {
     @Test
     public void test06() {
         Map<String, List<KdOrg>> kdOrgMap = new HashMap<>();
-        ArrayList<KdOrg> kdOrgs = new ArrayList<KdOrg>(){
+        List<KdOrg> kdOrgs = new ArrayList<KdOrg>() {
+            private static final long serialVersionUID = -1903955700240581078L;
+
             {
-                add(new KdOrg(1,2));
-                add(new KdOrg(2,3));
+                add(new KdOrg(1, 2));
+                add(new KdOrg(2, 3));
             }
         };
-        kdOrgMap.put("vw1",kdOrgs);
+        kdOrgMap.put("vw1", kdOrgs);
         System.out.println(kdOrgMap.toString());
     }
 
