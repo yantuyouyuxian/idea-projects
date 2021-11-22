@@ -1,5 +1,4 @@
-package entity;
-
+package com.zh.jpa.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +11,7 @@ import lombok.Setter;
 
 /**
  * @ Author         zhangHan
- * @ Date           2021/11/19 16:40
+ * @ Date           2021/11/22 19:30
  * @ Description
  */
 @Entity

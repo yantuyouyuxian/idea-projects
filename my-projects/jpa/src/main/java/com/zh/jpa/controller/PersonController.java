@@ -1,15 +1,22 @@
 package com.zh.jpa.controller;
 
 
+import com.zh.jpa.entity.Person;
 import com.zh.jpa.repository.PersonRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import entity.Person;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+
 
 /**
  * @ Author         zhangHan
@@ -35,6 +42,11 @@ public class PersonController {
     @DeleteMapping(path = "deletePerson")
     public void deletePerson(Long id) {
         personRepository.deleteById(id);
+    }
+
+    @GetMapping(path = "/getPerson")
+    public List<Person> getPerson(){
+        return personRepository.queryAllByIdIn(new ArrayList<>());
     }
 
 }
