@@ -34,6 +34,23 @@ public class MyTest {
     }
 
     @Test
+    public void test07() {
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>() {
+            private static final long serialVersionUID = -1903955700240581078L;
+            {
+            put(1, 2);
+            put(2, 3);
+            put(3, 4);
+        }};
+        map.forEach((k, v)->{
+            if (k == 2) {
+                return;
+            }
+            System.out.println(k + " : " + v);
+        });
+    }
+
+    @Test
     public void test06() {
         Map<String, List<KdOrg>> kdOrgMap = new HashMap<>();
         List<KdOrg> kdOrgs = new ArrayList<KdOrg>() {
