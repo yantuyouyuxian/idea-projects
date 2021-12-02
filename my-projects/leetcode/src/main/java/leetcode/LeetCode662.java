@@ -43,8 +43,6 @@ public class LeetCode662 {
             System.out.print(node.val + " ");
             preRead(node.left);
             preRead(node.right);
-        } else {
-            return;
         }
     }
 
@@ -53,8 +51,6 @@ public class LeetCode662 {
             midRead(node.left);
             System.out.print(node.val + " ");
             midRead(node.right);
-        } else {
-            return;
         }
     }
 
@@ -63,8 +59,6 @@ public class LeetCode662 {
             afterRead(node.left);
             afterRead(node.right);
             System.out.print(node.val + " ");
-        } else {
-            return;
         }
     }
 
