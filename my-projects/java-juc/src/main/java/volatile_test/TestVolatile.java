@@ -1,4 +1,4 @@
-package volat;
+package volatile_test;
 
 /**
  * @ Author         zhangHan

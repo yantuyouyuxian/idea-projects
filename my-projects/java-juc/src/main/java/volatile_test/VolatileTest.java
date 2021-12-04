@@ -1,4 +1,4 @@
-package volat;
+package volatile_test;
 
 /**
  * @ Author         zhangHan
@@ -24,6 +24,6 @@ public class VolatileTest extends Thread {
         vt.start();
         Thread.sleep(2000);
         vt.flag = true;
-        System.out.println("stope" + vt.i);
+        System.out.println("stop" + vt.i);
     }
 }
