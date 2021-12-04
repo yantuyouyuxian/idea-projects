@@ -29,8 +29,9 @@
         <module>mybatis-plus</module>
         <module>rabbit-mq</module>
         <module>rabbitmq-springboot</module>
-        <module>design-mode</module>
+        <module>design-pattern</module>
         <module>spring</module>
+        <module>java-fx</module>
     </modules>
 
     <dependencies>
