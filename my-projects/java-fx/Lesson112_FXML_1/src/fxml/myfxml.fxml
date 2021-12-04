@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 注释-->
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Button?>
+<AnchorPane xmlns:fx="http://www.javafxdeveloper.com">
+	<Button text="FxmlButton" prefWidth="100" prefHeight="100" id="fxmlbutton" >
+		<AnchorPane.leftAnchor>100</AnchorPane.leftAnchor>
+		<AnchorPane.topAnchor>100</AnchorPane.topAnchor>
+	</Button>
+		
+</AnchorPane>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.util.ArrayList?>
+<?import java.util.HashMap?>
+<?import application.Person?>
+
+<!-- <ArrayList>
+	<Person name="Map" age="100" />
+	<Person name="A" age="20" />
+	<Person name="B" age="60" />
+</ArrayList> -->
+
+<HashMap a="1" b="2" c="3"></HashMap>
+
+
+
+
