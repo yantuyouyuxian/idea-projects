@@ -30,9 +30,9 @@ public class Producer {
     }
 
     public static void main(String[] args) throws IOException, TimeoutException {
-        Thread consumer1 = new Thread(new Consumer(RabbitMqUtils.getConnection(), "work", 1));
+        Thread consumer1 = new Thread(new Consumer(RabbitMqUtils.getConnection(), "work", 1, "worker1"));
         consumer1.start();
-        Thread consumer2 = new Thread(new Consumer(RabbitMqUtils.getConnection(), "work", 3));
+        Thread consumer2 = new Thread(new Consumer(RabbitMqUtils.getConnection(), "work", 3, "worker2"));
         consumer2.start();
     }
 }

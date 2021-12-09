@@ -1,0 +1,32 @@
+.chart-series-line.default-color0{
+	-fx-stroke:red;
+}
+
+.chart-line-symbol.default-color0{
+	-fx-background-color:blue,white;
+}
+
+.chart-series-line.default-color1{
+	-fx-stroke:blue;
+}
+.chart-line-symbol.default-color1{
+	-fx-background-color:yellow,white;
+}
+
+#linechart{
+	-fx-create-symbols:true;
+}
+
+#linechart{
+	-fx-create-symbols:false;
+}
+.chart-alternative-column-fill{
+	-fx-fill:#ffb5c5;
+	-fx-stroke:transparent;
+	-fx-stroke-width:0;
+}
+.chart-alternative-row-fill{
+	-fx-fill:#add8e6;
+	-fx-stroke:transparent;
+	-fx-stroke-width:0;
+}

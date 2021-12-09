@@ -1,0 +1,15 @@
+.chart-series-area-fill.default-color0{
+	-fx-fill:yellow;
+}
+
+.chart-area-symbol.default-color0{
+	-fx-background-color:blue,white;
+}
+
+.chart-series-area-line.default-color0{
+	-fx-fill:red;
+}
+
+.chart-legend-symbol.default-color0{
+	-fx-background-color:blue,white;
+}

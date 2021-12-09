@@ -32,6 +32,7 @@
         <module>design-pattern</module>
         <module>spring</module>
         <module>java-fx</module>
+        <module>rabbitmq-amqp</module>
     </modules>
 
     <dependencies>

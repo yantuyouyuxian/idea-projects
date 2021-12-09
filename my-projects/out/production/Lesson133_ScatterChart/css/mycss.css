@@ -1,0 +1,6 @@
+.chart-symbol.default-color0{
+	-fx-background-color:red;
+	-fx-shap:"M0 ,50 Q50 , 0, 100 , 50 T200 , 50";
+}
+
+/*www.w3.org/TR/SVG/paths.html */
