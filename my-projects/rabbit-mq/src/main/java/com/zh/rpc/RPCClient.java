@@ -67,7 +67,9 @@ public class RPCClient implements AutoCloseable {
 
         final BlockingQueue<String> response = new ArrayBlockingQueue<>(1);
 
-        String ctag = channel.basicConsume(replyQueueName, true, (consumerTag, delivery) -> {
+        //接收返回队列信息
+        String cTag = channel.basicConsume(replyQueueName, true, (consumerTag, delivery) -> {
+            // 如果接收到的消息的id相符
             if (delivery.getProperties().getCorrelationId().equals(corrId)) {
                 response.offer(new String(delivery.getBody(), StandardCharsets.UTF_8));
             }
@@ -75,7 +77,7 @@ public class RPCClient implements AutoCloseable {
         });
 
         String result = response.take();
-        channel.basicCancel(ctag);
+        channel.basicCancel(cTag);
         return result;
     }
 
