@@ -101,11 +101,14 @@ public class ManualAckConfig {
     /**
      * 配置连接
      */
+    @Bean
     public CachingConnectionFactory rabbitConnectionFactory() {
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory("192.168.159.222");
         connectionFactory.setUsername("admin");
         connectionFactory.setPassword("123456");
         connectionFactory.setVirtualHost("/ems");
+        connectionFactory.setPublisherConfirmType(CachingConnectionFactory.ConfirmType.CORRELATED);
+        connectionFactory.setPublisherReturns(true);
         return connectionFactory;
     }
 }
