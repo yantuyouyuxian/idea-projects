@@ -15,21 +15,18 @@ import java.nio.charset.StandardCharsets;
  * @ Description
  */
 public class Consumer {
-    @RabbitListener(queues = "manualAckQueue",containerFactory = "messageListenerContainer")
+    @RabbitListener(queues = "manualAckQueue", containerFactory = "messageListenerContainer")
     public void processMessage(Channel channel, Message message) throws IOException {
-        try{
+        try {
             //签收消息
-            System.out.println("---收到消息："+ new String(message.getBody(), StandardCharsets.UTF_8));
+            System.out.println("---收到消息：" + new String(message.getBody(), StandardCharsets.UTF_8));
             Thread.sleep(3000);
-            System.out.println("---签收消息: "+ new String(message.getBody(), StandardCharsets.UTF_8));
-            channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
-        }catch (Exception e){
+            System.out.println("---签收消息: " + new String(message.getBody(), StandardCharsets.UTF_8));
+            channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
+        } catch (Exception e) {
             System.out.println("---签收消息异常");
             //处理抛出异常，如果重新把消息放回队列则requeue设置为true否则设置为false
-            channel.basicNack(message.getMessageProperties().getDeliveryTag(),false,true);
+            channel.basicNack(message.getMessageProperties().getDeliveryTag(), false, true);
         }
-
     }
-
-
 }

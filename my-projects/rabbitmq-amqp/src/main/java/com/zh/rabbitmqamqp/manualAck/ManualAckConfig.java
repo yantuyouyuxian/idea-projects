@@ -3,14 +3,12 @@ package com.zh.rabbitmqamqp.manualAck;
 import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.FanoutExchange;
+import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.core.ReturnedMessage;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
-import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.MessageConversionException;
 import org.springframework.amqp.support.converter.MessageConverter;
@@ -35,8 +33,8 @@ import lombok.SneakyThrows;
 public class ManualAckConfig {
 
     @Bean
-    public FanoutExchange fanoutExchange(){
-        return new FanoutExchange("manualAckExchange");
+    public DirectExchange fanoutExchange(){
+        return new DirectExchange("manualAckExchange");
     }
 
     @Bean
@@ -45,9 +43,9 @@ public class ManualAckConfig {
     }
 
     @Bean
-    public Binding binding(FanoutExchange exchange,
+    public Binding binding(DirectExchange exchange,
                            Queue queue){
-        return BindingBuilder.bind(queue).to(exchange);
+        return BindingBuilder.bind(queue).to(exchange).with("manual-ack");
     }
 
     @Bean
@@ -60,13 +58,31 @@ public class ManualAckConfig {
         return new Producer();
     }
 
+    private RabbitTemplate rabbitTemplate;
+
+    @Autowired
+    public void setRabbitTemplate(RabbitTemplate rabbitTemplate) {
+        this.rabbitTemplate = rabbitTemplate;
+    }
+
+    @PostConstruct
+    public void init() {
+        rabbitTemplate.setConfirmCallback((correlationData, ack, cause) -> {
+            System.out.println("correlationData: " + correlationData);
+            System.out.println("ack: " + ack);
+            System.out.println("cause: " + cause);
+        });
+
+        rabbitTemplate.setReturnsCallback(returned -> System.out.println("returnedMessage: " + returned));
+    }
+
+
     @Bean
-    public SimpleRabbitListenerContainerFactory messageListenerContainer() {
+    public SimpleRabbitListenerContainerFactory messageListenerContainer(CachingConnectionFactory connectionFactory) {
         SimpleRabbitListenerContainerFactory container = new SimpleRabbitListenerContainerFactory();
-        container.setConnectionFactory(rabbitConnectionFactory());
+        container.setConnectionFactory(connectionFactory);
         container.setAcknowledgeMode(AcknowledgeMode.MANUAL);
-        //限流表示每次消费端拉取一条消息进行消费直到收到确认完成后在拉取下一条
-        container.setPrefetchCount(1);
+        container.setPrefetchCount(3);
         container.setMessageConverter(new MessageConverter() {
             @Override
             public Message toMessage(Object object, MessageProperties messageProperties) throws MessageConversionException {
@@ -82,41 +98,14 @@ public class ManualAckConfig {
         return container;
     }
 
-    @Bean
+    /**
+     * 配置连接
+     */
     public CachingConnectionFactory rabbitConnectionFactory() {
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory("192.168.159.222");
         connectionFactory.setUsername("admin");
         connectionFactory.setPassword("123456");
+        connectionFactory.setVirtualHost("/ems");
         return connectionFactory;
-    }
-
-    @Profile("manualAck")
-    private static class ConfirmListenerConfig implements RabbitTemplate.ConfirmCallback, RabbitTemplate.ReturnsCallback {
-
-        private RabbitTemplate rabbitTemplate;
-
-        @Autowired
-        public void setRabbitTemplate(RabbitTemplate rabbitTemplate) {
-            this.rabbitTemplate = rabbitTemplate;
-        }
-
-        @PostConstruct
-        void init() {
-            rabbitTemplate.setConfirmCallback(this);
-            rabbitTemplate.setReturnsCallback(this);
-        }
-
-        @Override
-        public void confirm(CorrelationData correlationData, boolean ack, String cause) {
-            //消息发送到路由，true/false
-            System.out.println("correlationData: " + correlationData);
-            System.out.println("ack: " + ack);
-            System.out.println("cause: " + cause);
-        }
-
-        @Override
-        public void returnedMessage(ReturnedMessage returned) {
-            System.out.println("returnedMessage: " + returned);
-        }
     }
 }
