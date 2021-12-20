@@ -1,6 +1,5 @@
 package com.zh.rabbitmqspringboot.routing;
 
-import org.springframework.amqp.core.ExchangeTypes;
 import org.springframework.amqp.rabbit.annotation.Exchange;
 import org.springframework.amqp.rabbit.annotation.Queue;
 import org.springframework.amqp.rabbit.annotation.QueueBinding;
@@ -18,7 +17,7 @@ public class RoutingConsumer {
     @RabbitListener(bindings = {
             @QueueBinding(
                     value = @Queue,//临时队列
-                    exchange = @Exchange(value = "direct", type = ExchangeTypes.DIRECT),
+                    exchange = @Exchange(value = "direct"),
                     key = {"info"}
             )
     })
@@ -29,7 +28,7 @@ public class RoutingConsumer {
     @RabbitListener(bindings = {
             @QueueBinding(
                     value = @Queue,//临时队列
-                    exchange = @Exchange(value = "direct", type = ExchangeTypes.DIRECT),
+                    exchange = @Exchange(value = "direct"),
                     key = {"error"}
             )
     })

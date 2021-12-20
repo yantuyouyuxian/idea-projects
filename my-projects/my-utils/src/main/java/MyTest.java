@@ -2,6 +2,9 @@ import org.junit.Test;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -31,6 +34,70 @@ public class MyTest {
             this.fromOrg = fromOrg;
             this.toOrg = toOrg;
         }
+    }
+
+    @Test
+    public void test09(){
+        String directory ="APPS";
+        String createMdsRemainDemandSupplyTableSql = "CREATE TABLE \"" + directory + "\".\"CUX_ISC_MDS_REMAIN_RELEASE\"" +
+                "   (RESULT_ID NUMBER(20,0) NOT NULL ENABLE, " +
+                "ORGANIZATION_ID   NUMBER(20,0), " +
+                "INVENTORY_ITEM_ID   NUMBER(20,0), " +
+                "SCHEDULE_DATE   DATE, " +
+                "CUST_CODE   CHAR(30), " +
+                "MDS_SCHEDULE_DESIGNER   VARCHAR2(255), " +
+                "MPS_TRANSACTION_ID    NUMBER(20,0), " +
+                "ORIGIN_SCHEDULE_QTY    NUMBER(30,8), " +
+                "SCHEDULE_QTY    NUMBER(30,8), " +
+                "IS_NEW    CHAR(32) " +
+                "   ) SEGMENT CREATION IMMEDIATE  " +
+                "  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255  " +
+                " NOCOMPRESS LOGGING " +
+                "  STORAGE(INITIAL 131072 NEXT 131072 MINEXTENTS 1 MAXEXTENTS 2147483645 " +
+                "  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 " +
+                "  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT) " +
+                "  TABLESPACE   APPS_TS_TX_DATA  ";
+        String createLogTableSql = "CREATE TABLE \"" + directory + "\".\"CUX_ISC_CAL_RESULT_LOG\"" +
+                "   (RESULT_ID NUMBER(20,0) NOT NULL ENABLE," +
+                " HISTORY_ID NUMBER(20,0) NOT NULL ENABLE," +
+                "TYPE VARCHAR2(32) NOT NULL ENABLE, " +
+                "STATUS NUMBER(10,0) DEFAULT 0 NOT NULL ENABLE, " +
+                "IS_DELETED NUMBER(1,0) DEFAULT 0 NOT NULL ENABLE, " +
+                "CREATED_BY CHAR(32) NOT NULL ENABLE," +
+                "CREATED_DATE DATE NOT NULL ENABLE," +
+                "LAST_MODIFIED_BY CHAR(32) NOT NULL ENABLE, " +
+                "LAST_MODIFIED_DATE DATE NOT NULL ENABLE, " +
+                "VERSION NUMBER(10,0) DEFAULT 0 NOT NULL ENABLE," +
+                "PRIMARY KEY (RESULT_ID)" +
+                "  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS " +
+                "  STORAGE(INITIAL 131072 NEXT 131072 MINEXTENTS 1 MAXEXTENTS 2147483645" +
+                "  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1" +
+                "  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)" +
+                "  TABLESPACE APPS_TS_TX_DATA ENABLE" +
+                "   ) SEGMENT CREATION IMMEDIATE " +
+                "  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 " +
+                " NOCOMPRESS LOGGING" +
+                "  STORAGE(INITIAL 131072 NEXT 131072 MINEXTENTS 1 MAXEXTENTS 2147483645" +
+                "  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1" +
+                "  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)" +
+                "  TABLESPACE APPS_TS_TX_DATA";
+        System.out.println(createMdsRemainDemandSupplyTableSql);
+        System.out.println(createLogTableSql);
+    }
+
+    @Test
+    public void test08(){
+        System.out.println(LocalDateTime.now().with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY)));
+        System.out.println(LocalDateTime.now().with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY)).withHour(0).withMinute(0).withSecond(0).withNano(0));
+
+        String str1 = "aaa_bbb";
+        String str2 = "aaa_";
+        String str3 = "aaa";
+        System.out.println(str1.split("_").length);
+        System.out.println(str2.split("_").length);
+        System.out.println(str3.split("_").length);
+
+
     }
 
     @Test
