@@ -8,8 +8,10 @@ import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -37,8 +39,48 @@ public class MyTest {
     }
 
     @Test
-    public void test09(){
-        String directory ="APPS";
+    public void test12(){
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println(now.getDayOfWeek().equals(DayOfWeek.SUNDAY));
+    }
+
+    @Test
+    public void test11() {
+        HashSet<Integer> set = new HashSet<Integer>() {
+            private static final long serialVersionUID = -1903955700240581078L;
+
+            {
+                add(1);
+                add(2);
+                add(3);
+            }
+        };
+        HashMap<Integer, Set<Integer>> map = new HashMap<Integer, Set<Integer>>() {
+            private static final long serialVersionUID = 4095167663872143809L;
+
+            {
+            put(1, set);
+        }};
+        map.get(1).add(4);
+        map.getOrDefault(2, set);
+        System.out.println(map.toString());
+        System.out.println(set.toString());
+    }
+
+    @Test
+    public void test10() {
+        String config = "MDS_REWRITE_TYPE_";
+        String configName = "MDS_REWRITE_TYPE_KD_SO_96";
+        String configValue = "KD_MDS";
+        System.out.println(configName.substring(config.length()));
+        String typeOrg = configName.substring(config.length());
+        System.out.println(typeOrg.substring(0, typeOrg.lastIndexOf("_")));
+        System.out.println(typeOrg.substring(typeOrg.lastIndexOf("_") + 1));
+    }
+
+    @Test
+    public void test09() {
+        String directory = "APPS";
         String createMdsRemainDemandSupplyTableSql = "CREATE TABLE \"" + directory + "\".\"CUX_ISC_MDS_REMAIN_RELEASE\"" +
                 "   (RESULT_ID NUMBER(20,0) NOT NULL ENABLE, " +
                 "ORGANIZATION_ID   NUMBER(20,0), " +
@@ -86,7 +128,7 @@ public class MyTest {
     }
 
     @Test
-    public void test08(){
+    public void test08() {
         System.out.println(LocalDateTime.now().with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY)));
         System.out.println(LocalDateTime.now().with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY)).withHour(0).withMinute(0).withSecond(0).withNano(0));
 
@@ -104,12 +146,14 @@ public class MyTest {
     public void test07() {
         Map<Integer, Integer> map = new HashMap<Integer, Integer>() {
             private static final long serialVersionUID = -1903955700240581078L;
+
             {
-            put(1, 2);
-            put(2, 3);
-            put(3, 4);
-        }};
-        map.forEach((k, v)->{
+                put(1, 2);
+                put(2, 3);
+                put(3, 4);
+            }
+        };
+        map.forEach((k, v) -> {
             if (k == 2) {
                 return;
             }
