@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import java.lang.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.ComboBox?>
+
+<AnchorPane fx:controller="application.Controller" xmlns:fx="http://javafx.com/fxml/1">
+
+	<!-- TODO Add Nodes -->
+	
+	<Label text="this is a label">
+	
+	</Label>
+	
+	<Button fx:id="button" text="hello world" AnchorPane.topAnchor="50" onAction="#action">
+		<!--<String fx:value="String"></String>
+		<Double fx:value="100"></Double>-->
+	</Button>
+	
+	<ImageView AnchorPane.topAnchor="100" fitWidth="100"  preserveRatio="true">
+		<!-- <Image url="file:E:/Users/Z H/Desktop/images/tou.jpg"></Image> -->
+		<!-- <Image url="img/4.jpg"></Image> -->
+		<Image url="@/img/4.jpg">
+		</Image>
+	</ImageView> 
+	
+	<BorderPane style="-fx-background-color:yellow" AnchorPane.topAnchor="200" prefHeight="200" prefWidth="400">
+		<!-- <style></style> -->
+		<left>
+			<ListView fx:id="listview" prefWidth="200">
+				 <items>
+					<FXCollections fx:factory="observableArrayList">
+						<!-- <String fx:value="data1"></String>
+						<String fx:value="data2"></String>
+						<String fx:value="data3"></String> -->
+					</FXCollections>
+				</items>
+			</ListView>
+		</left>
+		
+		<right>
+			<ComboBox>
+				<items>
+					<FXCollections fx:factory="observableArrayList">
+						<String fx:value="data1"></String>
+						<String fx:value="data2"></String>
+						<String fx:value="data3"></String>
+					</FXCollections>
+				</items>
+			</ComboBox>
+		</right>
+	</BorderPane>
+	
+</AnchorPane>
+

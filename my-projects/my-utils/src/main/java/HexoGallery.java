@@ -1,8 +1,10 @@
+
 import org.junit.Test;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -36,7 +38,14 @@ public class HexoGallery {
     }
 
     @Test
-    public void test() {
+    public void test_1(){
+        HashMap<Integer, String> hashMap = new HashMap<>();
+        hashMap.put(1,"A");
+        hashMap.computeIfAbsent(1,k->"A");
+    }
+
+    @Test
+    public void test_2() {
 //        System.out.println(LocalDateTime.now().toString().replace("T"," "));
         String index = "001.1.1";
 //        System.out.println(index.substring(0, index.lastIndexOf('.')));

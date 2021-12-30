@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 注释-->
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<AnchorPane fx:controller="fx.com.MyController" xmlns:fx="http://www.javafxdeveloper.com">
+	
+	<Label fx:id="fxmllabel" text="this is a label"/>
+	
+	<Button  fx:id="fxmlbutton" text="FxmlButton" prefWidth="100" prefHeight="100" onAction="#action">
+		<AnchorPane.leftAnchor>100</AnchorPane.leftAnchor>
+		<AnchorPane.topAnchor>100</AnchorPane.topAnchor>
+	</Button>
+</AnchorPane>
