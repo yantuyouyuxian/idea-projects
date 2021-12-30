@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
+import java.time.temporal.WeekFields;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -39,7 +41,28 @@ public class MyTest {
     }
 
     @Test
-    public void test12(){
+    public void test13() {
+        LocalDateTime date1 = LocalDateTime.now();
+        System.out.println(date1);
+        LocalDateTime date2 = date1.plusDays(3);
+        System.out.println(date2);
+        LocalDateTime date3 = date1.plusDays(4);
+        System.out.println(date2);
+
+
+        WeekFields weekFields = WeekFields.ISO;
+//        WeekFields weekFields = WeekFields.of(DayOfWeek.MONDAY, 1);
+        System.out.println("date1的周数" + date1.get(weekFields.weekOfWeekBasedYear()));
+        System.out.println("date2的周数" + date2.get(weekFields.weekOfWeekBasedYear()));
+        System.out.println("date3的周数" + date3.get(weekFields.weekOfWeekBasedYear()));
+        System.out.println("date1,date2的间隔周数:" + ChronoUnit.WEEKS.between(date1.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY)), date2));
+        System.out.println("date1,date3的间隔周数:" + ChronoUnit.WEEKS.between(date1.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY)), date3));
+        System.out.println("根据date1得到date2的周数" + (date1.get(weekFields.weekOfWeekBasedYear()) + ChronoUnit.WEEKS.between(date1.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY)), date2)));
+        System.out.println("根据date1得到date3的周数" + (date1.get(weekFields.weekOfWeekBasedYear()) + ChronoUnit.WEEKS.between(date1.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY)), date3)));
+    }
+
+    @Test
+    public void test12() {
         LocalDateTime now = LocalDateTime.now();
         System.out.println(now.getDayOfWeek().equals(DayOfWeek.SUNDAY));
     }
@@ -59,8 +82,9 @@ public class MyTest {
             private static final long serialVersionUID = 4095167663872143809L;
 
             {
-            put(1, set);
-        }};
+                put(1, set);
+            }
+        };
         map.get(1).add(4);
         map.getOrDefault(2, set);
         System.out.println(map.toString());
