@@ -41,6 +41,20 @@ public class MyTest {
     }
 
     @Test
+    public void test15() {
+        System.out.println("aaa" + null);
+    }
+
+    @Test
+    public void test14() {
+        HashMap<Object, Object> map = new HashMap<>();
+        int n = 16 - 1;
+        System.out.println(n >> 1);
+        n |= n >>> 1;
+        System.out.println(n);
+    }
+
+    @Test
     public void test13() {
         LocalDateTime date1 = LocalDateTime.now();
         System.out.println(date1);
