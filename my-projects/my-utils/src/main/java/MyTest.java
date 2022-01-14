@@ -43,6 +43,10 @@ public class MyTest {
     @Test
     public void test15() {
         System.out.println("aaa" + null);
+        List<String> list = new ArrayList<>();
+        list.add(new String("aaa"));
+        list.add("bbb");
+        System.out.println(list.contains(new String("aaa")));
     }
 
     @Test
