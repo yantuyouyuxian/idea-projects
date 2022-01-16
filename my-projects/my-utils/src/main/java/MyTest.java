@@ -1,6 +1,8 @@
 import org.junit.Test;
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
@@ -29,6 +31,7 @@ public class MyTest {
         String name;
     }
 
+
     static class KdOrg implements Serializable {
         private static final long serialVersionUID = 1455451885124837472L;
         Integer fromOrg;
@@ -38,6 +41,190 @@ public class MyTest {
             this.fromOrg = fromOrg;
             this.toOrg = toOrg;
         }
+    }
+
+    public class NoAccessClass {
+        private String noAccessField = "12345";
+    }
+
+    class Car {
+        private String id;
+        //other info...
+    }
+
+    class Park {
+        private String id;
+        //other info...
+    }
+
+    class Fee {
+        private String carId;
+        private String parkId;
+        private LocalDateTime inTime;
+        private LocalDateTime outTime;
+        private BigDecimal fee;
+    }
+
+    @Test
+    public void test19(){
+        final String s = "AAA";
+        List list = new ArrayList();
+        list.add("aaa");
+        System.out.println(list.size());
+        Set set = new HashSet();
+        set.add("aa");
+        set.add("aa");
+        System.out.println(set);
+    }
+
+    @Test
+    public void test18() throws IllegalAccessException {
+        NoAccessClass aa = new NoAccessClass();
+        Class<? extends NoAccessClass> c = aa.getClass();
+        for (Field field : c.getDeclaredFields()) {
+            field.setAccessible(true);
+            System.out.println(field.getName() + ":" + field.get(aa));
+        }
+    }
+
+    @Test
+    public void test17() {
+        Box<String> name = new Box<String>("corn");
+        Box<Integer> age = new Box<Integer>(712);
+        Box<Number> number = new Box<Number>(314);
+        getData(name); // 1
+        getData(age); // 2
+        getData(number); // 3
+//        getUpperNumberData(name); // 4
+        getUpperNumberData(age); // 5
+        getUpperNumberData(number); // 6
+    }
+
+    public static void getData(Box<?> data) {
+        System.out.println("data :" + data.getData());
+    }
+
+    public static void getUpperNumberData(Box<? extends Number> data) {
+        System.out.println("data :" + data.getData());
+    }
+
+    static class Box<T> {
+        private T data;
+
+        public Box(T data) {
+            this.data = data;
+        }
+
+        public T getData() {
+            return data;
+        }
+
+        public void setData(T data) {
+            this.data = data;
+        }
+    }
+
+    @Test
+    public void test16() throws IOException {
+//        int w = 0;
+//        for (int x = 0; x < 5; x++) {
+//            for (int y = 0; y < 100; y++) {
+//                if (x == 3) {
+//                    break;
+//                }
+//                w++;
+//            }
+//        }
+//        System.out.println("w = " + w);
+
+//        new BufferedWriter(new FileWriter("a.txt"));
+//        new BufferedReader(new FileInputStream("a.dat"));
+//        new GZIPOutputStream(new FileOutputStream("a.zip"));
+//        new ObjectInputStream(new FileInputStream("a.dat"));
+
+//        int m = 5, n = 6;
+//        int x = (m++) + n;
+//        int y = (-m) + n;
+//        System.out.print("x=" + x + ",");
+//        System.out.println("y=" + y);
+
+//        Integer i1 = new Integer(10);
+//        Integer i2 = new Integer(10);
+//        Integer i3 = Integer.valueOf(10);
+//        Integer i4 = Integer.valueOf(10);
+//        System.out.println(i1 == i2);
+//        System.out.println(i1.equals(i2));
+//        System.out.println(i2 == i3);
+//        System.out.println(i3 == i4);
+
+//        try {
+//            int num1 = 1;
+//            int num2 = 0;
+//            int result = num1 / num2;
+//            System.out.println(result);
+//            throw new NumberFormatException();
+//        } catch (ArrayIndexOutOfBoundsException e) {
+//            System.out.println(1);
+//        } catch (NumberFormatException e) {
+//            System.out.println(2);
+//        } catch (Exception e) {
+//            System.out.println(3);
+//        } finally {
+//            System.out.println(4);
+//        }
+//        System.out.println(5);
+
+//        List<String> strings = new ArrayList<>(7);
+//        strings.add("四");
+//        strings.add("一");
+//        strings.add("九八");
+//        strings.add("三");
+//        strings.add("五");
+//        strings.add("九");
+//        strings.add("三六");
+//
+//        List<String> filteredStrings = strings.stream().filter(e -> !e.contains("九")).collect(Collectors.toList());
+//        System.out.println(filteredStrings);
+
+        final Thread thread1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("产品经理规划新需求");
+            }
+        });
+
+        final Thread thread2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    thread1.join();
+                    System.out.println("开发人员开发新需求功能");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        Thread thread3 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    thread2.join();
+                    System.out.println("测试人员测试新功能");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        System.out.println("早上：");
+        System.out.println("测试人员来上班了...");
+        thread3.start();
+        System.out.println("产品经理来上班了...");
+        thread1.start();
+        System.out.println("开发人员来上班了...");
+        thread2.start();
+
     }
 
     @Test
