@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -63,6 +64,14 @@ public class MyTest {
         private LocalDateTime inTime;
         private LocalDateTime outTime;
         private BigDecimal fee;
+    }
+
+    @Test
+    public void test20(){
+        float percentage = 100f;
+
+        BigDecimal avgRequiredQuantity = new BigDecimal(25551).multiply(BigDecimal.valueOf((Objects.nonNull(percentage) ? Float.valueOf(percentage) : 0f) / Float.valueOf(percentage))).setScale(0, BigDecimal.ROUND_UP);
+        System.out.println(avgRequiredQuantity);
     }
 
     @Test

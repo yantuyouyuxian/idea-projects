@@ -1,4 +1,4 @@
-package jdkproxy;
+package proxy.jdkproxy;
 
 /**
  * @ Author         zhangHan
