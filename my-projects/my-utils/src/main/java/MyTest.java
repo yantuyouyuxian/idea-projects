@@ -76,14 +76,15 @@ public class MyTest {
 
     @Test
     public void test19(){
-        final String s = "AAA";
-        List list = new ArrayList();
-        list.add("aaa");
-        System.out.println(list.size());
-        Set set = new HashSet();
-        set.add("aa");
-        set.add("aa");
-        System.out.println(set);
+//        final String s = "AAA";
+//        List list = new ArrayList();
+//        list.add("aaa");
+//        System.out.println(list.size());
+//        Set set = new HashSet();
+//        set.add("aa");
+//        set.add("aa");
+//        System.out.println(set);
+
     }
 
     @Test
