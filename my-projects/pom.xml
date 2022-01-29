@@ -35,6 +35,7 @@
         <module>rabbitmq-amqp</module>
         <module>spring-mail</module>
         <module>spring-boot-swagger</module>
+        <module>jvm</module>
     </modules>
 
     <dependencies>
