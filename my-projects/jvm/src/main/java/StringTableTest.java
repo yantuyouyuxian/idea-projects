@@ -5,10 +5,15 @@
  */
 public class StringTableTest {
     public static void main(String[] args) {
-        int a =1;
-        String s1 = new String("a");
-        String s4 = new String("b");
-        String s2 = new String("ab");
-        String s3 = "ab";
+        String s1 = new String("abc");
+        String s2 = new String("abc");
+        String s3 = "abc";
+        System.out.println(s1 == s2);
+        System.out.println(s1 == s3);
+        s1 = s1.intern();
+        System.out.println(s1 == s2);
+        System.out.println(s1 == s3);
+
+
     }
 }
