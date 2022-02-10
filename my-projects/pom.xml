@@ -36,6 +36,7 @@
         <module>spring-mail</module>
         <module>spring-boot-swagger</module>
         <module>jvm</module>
+        <module>elastic-search</module>
     </modules>
 
     <dependencies>
