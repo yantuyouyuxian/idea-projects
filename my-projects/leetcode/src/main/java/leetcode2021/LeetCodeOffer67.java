@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode2021;
 
 public class LeetCodeOffer67 {
 
