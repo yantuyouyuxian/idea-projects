@@ -67,7 +67,15 @@ public class MyTest {
     }
 
     @Test
-    public void test20(){
+    public void test21() {
+        Map<Integer, Map<Integer, Integer>> map = new HashMap<>();
+        Integer value = map.computeIfAbsent(1, v -> new HashMap<>()).computeIfAbsent(2, v -> 3);
+        value = 4;
+        System.out.println(map);
+    }
+
+    @Test
+    public void test20() {
         float percentage = 100f;
 
         BigDecimal avgRequiredQuantity = new BigDecimal(25551).multiply(BigDecimal.valueOf((Objects.nonNull(percentage) ? Float.valueOf(percentage) : 0f) / Float.valueOf(percentage))).setScale(0, BigDecimal.ROUND_UP);
@@ -75,7 +83,7 @@ public class MyTest {
     }
 
     @Test
-    public void test19(){
+    public void test19() {
 //        final String s = "AAA";
 //        List list = new ArrayList();
 //        list.add("aaa");
