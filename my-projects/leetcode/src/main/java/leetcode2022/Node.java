@@ -1,5 +1,6 @@
 package leetcode2022;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,5 +41,10 @@ public class Node {
     public Node(int _val, List<Node> _children) {
         val = _val;
         children = _children;
+    }
+
+    public Node(int _val, ArrayList<Node> _neighbors) {
+        val = _val;
+        neighbors = _neighbors;
     }
 };
