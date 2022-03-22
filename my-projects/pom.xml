@@ -38,15 +38,9 @@
         <module>jvm</module>
         <module>elastic-search</module>
         <module>spring-boot-test</module>
+        <module>easy-excel</module>
     </modules>
 
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-        </dependency>
-    </dependencies>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

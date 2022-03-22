@@ -1,6 +1,6 @@
 package com.zh.print;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.PrintStream;
 import java.io.PrintWriter;

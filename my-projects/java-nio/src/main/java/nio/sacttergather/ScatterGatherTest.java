@@ -1,8 +1,6 @@
 package nio.sacttergather;
 
-import org.junit.Test;
-
-import sun.rmi.runtime.NewThreadAction;
+import org.junit.jupiter.api.Test;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

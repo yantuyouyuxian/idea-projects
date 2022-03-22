@@ -16,10 +16,14 @@ import redis.clients.jedis.Jedis;
 public class JedisDemo1 {
     public static void main(String[] args) {
 
+        //建立连接
         Jedis jedis = new Jedis("192.168.159.222", 6379);
+        // 设置密码
+        jedis.auth("123456");
+        // 选择库
+        jedis.select(0);
 
-        String ping = jedis.ping();
-        System.out.println(ping);
+        System.out.println(jedis.ping());
     }
 
     @Test
@@ -49,6 +53,8 @@ public class JedisDemo1 {
         //hash
 //        jedis.hset("hash1","name","zhangSan");
         jedis.hset("hash1", new HashMap<String, String>() {
+            private static final long serialVersionUID = 2848049340793048615L;
+
             {
                 put("name", "zhangSan");
                 put("age", "12");
@@ -60,6 +66,8 @@ public class JedisDemo1 {
         //zset
 //        jedis.zadd("zset1", 100d, "A");
         jedis.zadd("zset1", new HashMap<String, Double>() {
+            private static final long serialVersionUID = 6269455497125005153L;
+
             {
                 put("A", 90d);
                 put("B", 80d);

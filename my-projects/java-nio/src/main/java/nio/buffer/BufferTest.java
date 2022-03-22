@@ -1,6 +1,7 @@
 package nio.buffer;
 
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
