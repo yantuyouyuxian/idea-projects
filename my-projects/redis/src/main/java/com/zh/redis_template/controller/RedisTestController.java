@@ -1,4 +1,4 @@
-package com.zh.springboot_redis.controller;
+package com.zh.redis_template.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -27,26 +28,26 @@ public class RedisTestController {
     }
 
     @GetMapping("/testLock")
-    public void testLock(){
+    public void testLock() {
         String uuid = UUID.randomUUID().toString();
         //1获取锁，setne
-        Boolean lock = redisTemplate.opsForValue().setIfAbsent("lock", uuid,30, TimeUnit.MILLISECONDS);
+        Boolean lock = redisTemplate.opsForValue().setIfAbsent("lock", uuid, 30, TimeUnit.MILLISECONDS);
         //2获取锁成功、查询num的值
-        if(lock){
+        if (lock) {
             Object value = redisTemplate.opsForValue().get("num");
             //2.1判断num为空return
-            if(StringUtils.isEmpty(value)){
+            if (StringUtils.isEmpty(value)) {
                 return;
             }
             //2.2有值就转成成int
-            int num = Integer.parseInt(value+"");
+            int num = Integer.parseInt(value + "");
             //2.3把redis的num加1
             redisTemplate.opsForValue().set("num", ++num);
-            if(uuid.equals((String)redisTemplate.opsForValue().get("lock"))){
+            if (uuid.equals((String) redisTemplate.opsForValue().get("lock"))) {
                 //2.4释放锁，del
                 redisTemplate.delete("lock");
             }
-        }else{
+        } else {
             //3获取锁失败、每隔0.1秒再获取
             try {
                 Thread.sleep(100);
@@ -60,8 +61,11 @@ public class RedisTestController {
 
     @GetMapping("/getName")
     public String testFunction() {
-//        redisTemplate.opsForValue().set("name","zhangSan");
-        String name = (String)redisTemplate.opsForValue().get("name");
-        return name;
+        return (String) redisTemplate.opsForValue().get("name");
+    }
+
+    @GetMapping("/setName")
+    public void setName() {
+        redisTemplate.opsForValue().set("name", "zhangSan" + LocalDateTime.now());
     }
 }

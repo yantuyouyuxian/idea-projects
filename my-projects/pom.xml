@@ -21,7 +21,7 @@
         <module>session-cookie</module>
         <module>css</module>
         <module>my-utils</module>
-        <module>jedis-redis</module>
+        <module>redis</module>
         <module>redis-second-kill</module>
         <module>java-io</module>
         <module>java-nio</module>
