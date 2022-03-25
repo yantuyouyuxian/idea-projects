@@ -1,0 +1,21 @@
+# 授权码： brofrcntnlagebgh
+
+spring:
+  mail:
+    host: smtp.qq.com
+    username: 2366120116@qq.com
+    password: brofrcntnlagebgh
+    port: 587
+    protocol: smtp
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          # 配置SSL 加密工厂
+          socketFactoryClass: javax.net.ssl.SSLSocketFactory
+        #表示开启 DEBUG 模式，这样，邮件发送过程的日志会在控制台打印出来，方便排查错误
+        debug: true
+
+
+
+
