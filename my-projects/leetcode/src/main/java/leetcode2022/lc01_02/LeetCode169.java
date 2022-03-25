@@ -1,4 +1,4 @@
-package leetcode2022;
+package leetcode2022.lc01_02;
 
 import java.util.Arrays;
 

@@ -3,7 +3,7 @@ package leetcode2022.lc03;
 import java.util.ArrayList;
 import java.util.List;
 
-import leetcode2022.Node;
+import leetcode2022.lc01_02.Node;
 
 /**
  * @ Author         zhangHan
@@ -20,7 +20,7 @@ public class LeetCode590 {
     public List<Integer> postorder(Node root) {
         List<Integer> result = new ArrayList<>();
 //        postFun(root, result);
-        
+
         return result;
     }
 

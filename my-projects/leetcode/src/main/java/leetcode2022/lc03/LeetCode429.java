@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import leetcode2022.Node;
+import leetcode2022.lc01_02.Node;
 
 /**
  * @ Author         zhangHan
