@@ -14,12 +14,12 @@ import org.springframework.data.redis.core.RedisTemplate;
 public class RedisTemplateTest {
 
     @Autowired
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<String, String> redisTemplate;
 
     @Test
     void testString(){
-        redisTemplate.opsForValue().set("myName","zhang han");
-        System.out.println(redisTemplate.opsForValue().get("myName"));
+        redisTemplate.opsForValue().set("我的名字","张寒");
+        System.out.println(redisTemplate.opsForValue().get("我的名字"));
     }
 
 }
