@@ -1,10 +1,6 @@
 package test;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.Set;
 
 /**
  * @ Author         zhangHan
@@ -62,50 +58,78 @@ public class Main {
 //        }
 //    }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        while (sc.hasNextLine()) {
-            int n = Integer.parseInt(sc.nextLine());
-            Set<Integer> allNode = new HashSet<>();
-            Set<Integer> startNode = new HashSet<>();
-            for (int i = 0; i < n; i++) {
-                startNode.add(i);
-                allNode.add(i);
-            }
-            Map<Integer, Set<Integer>> reachMap = new HashMap<>();
-//            String arr = sc.nextLine();
-//            while (arr.split(" ").length == 2) {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        while (sc.hasNextLine()) {
+//            int n = Integer.parseInt(sc.nextLine());
+//            Set<Integer> allNode = new HashSet<>();
+//            Set<Integer> startNode = new HashSet<>();
+//            for (int i = 0; i < n; i++) {
+//                startNode.add(i);
+//                allNode.add(i);
+//            }
+//            Map<Integer, Set<Integer>> reachMap = new HashMap<>();
+////            String arr = sc.nextLine();
+////            while (arr.split(" ").length == 2) {
+////                int a = Integer.parseInt(arr.split(" ")[0]);
+////                int b = Integer.parseInt(arr.split(" ")[1]);
+////                startNode.remove(b);
+////                reachMap.computeIfAbsent(a, k -> new HashSet<>()).add(b);
+////                arr = sc.nextLine();
+////            }
+//            String arr;
+//            while (sc.hasNextLine()) {
+//                arr = sc.nextLine();
 //                int a = Integer.parseInt(arr.split(" ")[0]);
 //                int b = Integer.parseInt(arr.split(" ")[1]);
 //                startNode.remove(b);
 //                reachMap.computeIfAbsent(a, k -> new HashSet<>()).add(b);
-//                arr = sc.nextLine();
 //            }
-            String arr;
-            while (sc.hasNextLine()) {
-                arr = sc.nextLine();
-                int a = Integer.parseInt(arr.split(" ")[0]);
-                int b = Integer.parseInt(arr.split(" ")[1]);
-                startNode.remove(b);
-                reachMap.computeIfAbsent(a, k -> new HashSet<>()).add(b);
-            }
+//
+//            boolean flag = false;
+//            while (startNode.size() > 0) {
+//                allNode.removeAll(startNode);
+//                if (allNode.size() == 0) {
+//                    flag = true;
+//                    break;
+//                } else {
+//                    Set<Integer> nextStart = new HashSet<>();
+//                    for (Integer start : startNode) {
+//                        nextStart.addAll(reachMap.getOrDefault(start, new HashSet<>()));
+//                        reachMap.remove(start);
+//                    }
+//                    startNode = nextStart;
+//                }
+//            }
+//            System.out.println(flag ? "yes" : "no");
+//        }
+//    }
 
-            boolean flag = false;
-            while (startNode.size() > 0) {
-                allNode.removeAll(startNode);
-                if (allNode.size() == 0) {
-                    flag = true;
-                    break;
-                } else {
-                    Set<Integer> nextStart = new HashSet<>();
-                    for (Integer start : startNode) {
-                        nextStart.addAll(reachMap.getOrDefault(start, new HashSet<>()));
-                        reachMap.remove(start);
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNextLine()) {
+            String str = sc.nextLine();
+            int num1 = 0;
+//            int num2 = 0;
+            String res = "YES";
+            char[] chars = str.toCharArray();
+            for (int i = 0; i < chars.length; i++) {
+                if (chars[i] == '(') {
+                    num1++;
+                } else if (chars[i] == ')') {
+                    if (num1 == 0) {
+                        res = "NO";
+                    } else {
+                        num1--;
                     }
-                    startNode = nextStart;
                 }
             }
-            System.out.println(flag ? "yes" : "no");
+            if (num1 != 0) {
+                res = "NO";
+            }
+            System.out.println(res);
         }
     }
 }
+

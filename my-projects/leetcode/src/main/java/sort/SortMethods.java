@@ -1,6 +1,8 @@
 package sort;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @ Author         zhangHan
@@ -10,9 +12,11 @@ import java.util.Arrays;
 public class SortMethods {
     public static void main(String[] args) {
         int[] nums = new int[]{43, 12, 99, 10, 22, 3, 17};
+        List<Integer> list = Arrays.stream(nums).boxed().sorted((o1, o2) -> o2 - o1).collect(Collectors.toList());
+        System.out.println(list);
 //        bubbleSort(nums);
-        quickSort(0, nums.length - 1, nums);
-        System.out.println(Arrays.toString(nums));
+//        quickSort(0, nums.length - 1, nums);
+//        System.out.println(Arrays.toString(nums));
     }
 
     public static void bubbleSort(int[] nums) {
